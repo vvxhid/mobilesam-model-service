@@ -1,0 +1,23 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8501:8501"
+    command: streamlit run app.py --server.port 8501 --server.address 0.0.0.0
+    environment:
+      - API_URL=http://backend:8000/api
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./app
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+networks:
+  default:

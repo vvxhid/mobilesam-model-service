@@ -14,7 +14,7 @@ async def health_check():
 
 
 @router.post(
-    "/segment-image/",
+    "/segment-image",
     summary="Segment an uploaded image",
     description="Segment an uploaded image using the provided parameters. Returns the segmented image as a streaming response or an error response.",
     responses={

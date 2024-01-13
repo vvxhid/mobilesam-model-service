@@ -30,6 +30,7 @@ app = FastAPI(
     title="MobileSam Segmentation Model Service",
     description="MobileSam is a machine learning model specialized in image segmentation on CPUs.",
     lifespan=lifespan,
+    root_path="/api"
 )
 
 # Allow CORS for local debugging

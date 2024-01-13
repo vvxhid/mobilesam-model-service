@@ -9,14 +9,12 @@ RUN apt-get update \
        libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/src/
+WORKDIR /usr/src/fastapi_app
 
-COPY ./requirements.txt .
+COPY ../requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ./app ./app
+COPY .. ./app
 
 EXPOSE 8000
-
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

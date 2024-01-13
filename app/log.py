@@ -1,4 +1,5 @@
 import logging
+from logging.config import dictConfig
 from pydantic import BaseModel
 
 
@@ -32,5 +33,5 @@ class LogConfig(BaseModel):
 
 
 log_config = LogConfig()
-logging.config.dictConfig(log_config.model_dump())
+dictConfig(log_config.model_dump())
 logger = logging.getLogger(log_config.LOGGER_NAME)
